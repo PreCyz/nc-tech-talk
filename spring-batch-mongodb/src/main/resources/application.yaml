@@ -1,0 +1,37 @@
+mongodb:
+  database: tech-talk
+  host: mongodb://localhost:27017
+  bulk:
+    batchSize: 1000
+
+application:
+  # possible values [FILE, PALANTIR]
+  mode: FILE
+
+csv:
+  # how many lines from csv will be loaded to program memory. To many could cause Out Of Memory exception.
+  chunkSize: 50000
+  # save csv files to that directory
+  directory: ./csv
+
+# Palantir integration
+palantir:
+  endpoint: someUrl
+  token: someToken
+  branch: master
+
+request:
+  connection:
+    # [s,S] stands for seconds, [m,M] stands for minutes, [h,H] stands for hours. Format is 1m = 1 minute, 12H == 12 hours
+    timeout: 2h
+  retry:
+    # how many times request should be retry when it fails
+    limit: 2
+
+log:
+  # admin log purposes, is set as 'true' then logging is active
+  whileWaitingForResponse: true
+  wait:
+    # admin log purposes, frequency which log msg appears in the logs in seconds.
+    # 15 means every 15 seconds message will appear in the logs until request is finished
+    interval: 5
